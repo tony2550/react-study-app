@@ -4,7 +4,7 @@
 
 ### `노션 블로그`
 
-[조건부 렌더링](https://www.notion.so/mookiemookiekun/props-dd6f8307b8fa4b359bc153f3f973d080)
+[조건부 렌더링](https://mookiemookiekun.notion.site/6413cf679e9941cc92f3f89a16a18856)
 
 ### `npm start`
 
