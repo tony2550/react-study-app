@@ -8,7 +8,7 @@ const Hello = ({ name, backnumber, team, isCaptain }) => {
           <div>
             <span className={classes.Introduce}>Player's name is </span>
             <span className={classes.Username}>{name}</span>
-            {isCaptain ? <span className={classes.Captain}>C</span> : null}
+            {isCaptain && <span className={classes.Captain}>C</span>}
           </div>
           <div>
             <span className={classes.Introduce}>Back Number </span>
