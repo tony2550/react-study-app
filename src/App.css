@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+/* start */
+
+.app-header {
+  text-align: center;
+}
+
+.app-navbar {
+  align-items: center;
+}
+
+.app-navbar > ul {
+  display: flex;
+  margin-left: 7vw;
+  gap: 1vw;
+  list-style: none;
+}
+
+.app-navbar > ul > li {
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
