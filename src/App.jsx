@@ -6,7 +6,7 @@ Hello.defaultProps = {
   name: 'Do Do Sam',
 };
 
-function App() {
+const App = () => {
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -18,12 +18,13 @@ function App() {
       </div>
       <div className="app-content">
         <Wrapper>
-          <Hello name="mookie" backnumber="27" team="yeon baseball" />
+          <Hello name="mookie" backnumber="27" team="yeon baseball" isCaptain={true} />
           <Hello backnumber="45" team="Boston Pinksox" />
+          <Hello name="Dohyun Kim" backnumber="4" team="DITeam" />
         </Wrapper>
       </div>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,8 +1,10 @@
 # React-Study-App Chapter 1 . props
 
-props로 컴포넌트끼리 값 전달하기
+## 조건부 렌더링
 
-[prop로 값 전달하기](https://www.notion.so/mookiemookiekun/props-dd6f8307b8fa4b359bc153f3f973d080)
+### `노션 블로그`
+
+[조건부 렌더링](https://www.notion.so/mookiemookiekun/props-dd6f8307b8fa4b359bc153f3f973d080)
 
 ### `npm start`
 

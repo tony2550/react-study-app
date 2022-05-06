@@ -1,13 +1,14 @@
 import React from 'react';
 import classes from './Hello.module.css';
-const Hello = ({ name, backnumber, team }) => {
+const Hello = ({ name, backnumber, team, isCaptain }) => {
   return (
     <div>
       <section className={classes.Root}>
         <div className={classes.Container}>
           <div>
-            <span className={classes.Introduce}>My name is </span>
+            <span className={classes.Introduce}>Player's name is </span>
             <span className={classes.Username}>{name}</span>
+            {isCaptain ? <span className={classes.Captain}>C</span> : null}
           </div>
           <div>
             <span className={classes.Introduce}>Back Number </span>
