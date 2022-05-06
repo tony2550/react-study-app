@@ -1,6 +1,8 @@
-# React-Study-App
+# React-Study-App Chapter 1 . props
 
-리액트 학습 시작
+props로 컴포넌트끼리 값 전달하기
+
+[prop로 값 전달하기](https://www.notion.so/mookiemookiekun/props-dd6f8307b8fa4b359bc153f3f973d080)
 
 ### `npm start`
 
