@@ -4,7 +4,7 @@
   overflow: hidden;
   width: 93vw;
   height: calc(93vw * 0.5625);
-  max-height: 80vh;
+  max-height: 30vh;
   max-width: calc(93vh * 1.78);
   margin: auto;
 }

@@ -1,6 +1,10 @@
 import './App.css';
 import Hello from './components/Hello';
 
+Hello.defaultProps = {
+  name: 'Do Do Sam',
+};
+
 function App() {
   return (
     <div>
@@ -13,6 +17,7 @@ function App() {
       </div>
       <div className="app-content">
         <Hello name="mookie" backnumber="27" team="yeon baseball" />
+        <Hello backnumber="45" team="Boston Pinksox" />
       </div>
     </div>
   );
