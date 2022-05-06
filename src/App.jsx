@@ -1,5 +1,6 @@
 import './App.css';
 import Hello from './components/Hello';
+import Wrapper from './components/Wrapper';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
@@ -16,8 +17,10 @@ function App() {
         </ul>
       </div>
       <div className="app-content">
-        <Hello name="mookie" backnumber="27" team="yeon baseball" />
-        <Hello backnumber="45" team="Boston Pinksox" />
+        <Wrapper>
+          <Hello name="mookie" backnumber="27" team="yeon baseball" />
+          <Hello backnumber="45" team="Boston Pinksox" />
+        </Wrapper>
       </div>
     </div>
   );
