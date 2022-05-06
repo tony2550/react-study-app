@@ -18,7 +18,7 @@ const App = () => {
       </div>
       <div className="app-content">
         <Wrapper>
-          <Hello name="mookie" backnumber="27" team="yeon baseball" isCaptain={true} />
+          <Hello name="mookie" backnumber="27" team="yeon baseball" isCaptain />
           <Hello backnumber="45" team="Boston Pinksox" />
           <Hello name="Dohyun Kim" backnumber="4" team="DITeam" />
         </Wrapper>
