@@ -1,10 +1,10 @@
 # React-Study-App Chapter 1 . props
 
-## 조건부 렌더링
+## useState로 컴포넌트에서 바뀌는 값 관리
 
 ### `노션 블로그`
 
-[조건부 렌더링](https://mookiemookiekun.notion.site/6413cf679e9941cc92f3f89a16a18856)
+[useState로 컴포넌트에서 바뀌는 값 관리](https://mookiemookiekun.notion.site/useState-9eb9aa3ff7df4b2a8f8b41382965c74e)
 
 ### `npm start`
 
