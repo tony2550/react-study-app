@@ -1,4 +1,7 @@
-# React-Study-App Chapter 1 . props
+# React-Study-App Chapter 3 . useState
+
+- 챕터는 branch별로 나누어져 있습니다.
+- 코드의 자세한 설명은 블로그를 확인해 주세요!
 
 ## useState로 컴포넌트에서 바뀌는 값 관리
 
