@@ -4,7 +4,7 @@ import Counter from './components/Counter/Counter';
 import Hello from './components/Hello/Hello';
 import Wrapper from './components/Hello/Wrapper';
 import InputEx from './components/Input/InputEx';
-import MultipleInputs from './components/Input/MultipleInputs';
+import PlayerList from './components/PlayersPage/PlayerList';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
@@ -21,6 +21,7 @@ const App = () => {
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
           <li onClick={() => setPage(2)}>Chapter4-6</li>
+          <li onClick={() => setPage(3)}>Chapter7</li>
         </ul>
       </div>
       <div className="app-content">
@@ -32,8 +33,10 @@ const App = () => {
           </Wrapper>
         ) : page === 1 ? (
           <Counter />
-        ) : (
+        ) : page === 2 ? (
           <InputEx />
+        ) : (
+          <PlayerList />
         )}
       </div>
     </div>

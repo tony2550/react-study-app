@@ -1,13 +1,13 @@
-# React-Study-App Chapter 5 . Multiple Inputs with State
+# React-Study-App Chapter 7. Rendering Array
 
 - 챕터는 branch별로 나누어져 있습니다.
 - 코드의 자세한 설명은 블로그를 확인해 주세요!
 
-## 여러개의 input 상태 관리
+## 배열 렌더링하기
 
 ### `노션 블로그`
 
-[여러개의 input 상태 관리](https://mookiemookiekun.notion.site/input-ed57ad53ccf0432e83db1aa870a0519b)
+[배열 렌더링하기](https://mookiemookiekun.notion.site/7-a12c6d7f1ede428d819abf7e94c40a1a)
 
 ### `npm start`
 
