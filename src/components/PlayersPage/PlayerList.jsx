@@ -21,9 +21,9 @@ const PlayerList = () => {
     <>
       <div className={classes.Root}>
         <div className={classes.Container}>
-          <Player player={players[0]} />
-          <Player player={players[1]} />
-          <Player player={players[2]} />
+          {players.map((player) => (
+            <Player player={player} key={player.id} />
+          ))}
         </div>
       </div>
     </>
