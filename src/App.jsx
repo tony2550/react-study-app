@@ -4,6 +4,7 @@ import Counter from './components/Counter/Counter';
 import Hello from './components/Hello/Hello';
 import Wrapper from './components/Hello/Wrapper';
 import InputEx from './components/Input/InputEx';
+import MultipleInputs from './components/Input/MultipleInputs';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
@@ -19,7 +20,7 @@ const App = () => {
         <ul className="navbtn-wrapper">
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
-          <li onClick={() => setPage(2)}>Chapter4</li>
+          <li onClick={() => setPage(2)}>Chapter4-5</li>
         </ul>
       </div>
       <div className="app-content">
