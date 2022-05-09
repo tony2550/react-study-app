@@ -20,7 +20,7 @@ const App = () => {
         <ul className="navbtn-wrapper">
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
-          <li onClick={() => setPage(2)}>Chapter4-5</li>
+          <li onClick={() => setPage(2)}>Chapter4-6</li>
         </ul>
       </div>
       <div className="app-content">

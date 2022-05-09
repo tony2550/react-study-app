@@ -21,13 +21,15 @@
 }
 
 .Container > input {
-  padding: 8px 8px;
-  font-size: large;
+  font-size: 1.6em;
+  padding: 6px 8px;
+  line-height: 1.2em;
 }
 
 .Container > button {
-  padding: 8px 8px;
-  font-size: large;
+  font-size: 1.6em;
+  padding: 6px 8px;
+  line-height: 1.2em;
 }
 
 .Board > h1:nth-child(2) {

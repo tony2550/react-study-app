@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import classes from './Input.module.css';
 
 const MultipleInputs = () => {
@@ -7,13 +7,15 @@ const MultipleInputs = () => {
     backnumber: '',
   });
 
-  const { name, backnumber } = inputs; // 구조 분해 할당으로 각각의 값 추출
+  const nameInput = useRef();
+
+  const { name, backnumber } = inputs;
 
   const onChange = (e) => {
     const { value, name } = e.target;
     setInputs({
-      ...inputs, // 기존의 input 객체 copy
-      [name]: value, // name 키를 가진 값을 value로 설정하기
+      ...inputs,
+      [name]: value,
     });
   };
 
@@ -22,11 +24,12 @@ const MultipleInputs = () => {
       name: '',
       backnumber: '',
     });
+    nameInput.current.focus();
   };
 
   return (
     <div className={classes.Container}>
-      <input name="name" placeholder="Player Name" onChange={onChange} value={name} />
+      <input name="name" placeholder="Player Name" onChange={onChange} value={name} ref={nameInput} />
       <input name="backnumber" placeholder="Back Number" onChange={onChange} value={backnumber} />
       <button onClick={onReset}>RESET</button>
       <div className={classes.Board}>
