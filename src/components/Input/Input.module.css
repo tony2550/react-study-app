@@ -29,3 +29,11 @@
   padding: 8px 8px;
   font-size: large;
 }
+
+.Board > h1:nth-child(2) {
+  color: dodgerblue;
+}
+
+.Board > h1:nth-child(4) {
+  color: red;
+}
