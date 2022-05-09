@@ -5,11 +5,12 @@ const Counter = () => {
   const [number, setNumber] = useState(0);
 
   const onIncrease = () => {
-    setNumber(number + 1);
+    setNumber((prevNumber) => prevNumber + 1);
+    // 값을 업데이트 하는 함수를 파라미터로 넣기
   };
 
   const onDecrease = () => {
-    setNumber(number - 1);
+    setNumber((prevNumber) => prevNumber - 1);
   };
 
   return (
