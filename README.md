@@ -1,4 +1,4 @@
-# React-Study-App Chapter 1 . props
+# React-Study-App Chapter 2 . Conditional Rendering
 
 ## 조건부 렌더링
 
