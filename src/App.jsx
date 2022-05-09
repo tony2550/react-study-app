@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import Counter from './components/Counter';
-import Hello from './components/Hello';
-import Wrapper from './components/Wrapper';
+import Counter from './components/Counter/Counter';
+import Hello from './components/Hello/Hello';
+import Wrapper from './components/Hello/Wrapper';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
