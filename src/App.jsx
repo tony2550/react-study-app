@@ -11,6 +11,11 @@ Hello.defaultProps = {
   name: 'Do Do Sam',
 };
 
+const countActivePlayers = (players) => {
+  console.log('활성 선수 수를 세는중....');
+  return players.filter((player) => player.active).length;
+};
+
 const App = () => {
   const [page, setPage] = useState(0);
 
@@ -63,6 +68,8 @@ const App = () => {
     setPlayers(players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
   };
 
+  const count = countActivePlayers(players);
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -73,6 +80,7 @@ const App = () => {
           <li onClick={() => setPage(2)}>Chapter4-6</li>
           <li onClick={() => setPage(3)}>Chapter7-8</li>
         </ul>
+        <div className="activeCount">활성 선수 수 : {count}</div>
       </div>
       <div className="app-content">
         {page === 0 ? (

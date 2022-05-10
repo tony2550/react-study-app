@@ -41,15 +41,20 @@
 
 .app-header {
   text-align: center;
+  align-items: center;
 }
 
 .app-navbar {
   align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: calc(93vh * 1.78);
+  margin: auto;
 }
 
 .app-navbar > ul {
   display: flex;
-  margin-left: 7vw;
+  /* margin-left: 7vw; */
   gap: 1vw;
   list-style: none;
 }
@@ -63,4 +68,10 @@
 .app-navbar > ul > li:hover {
   color: grey;
   cursor: pointer;
+}
+
+.activeCount {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: green;
 }
