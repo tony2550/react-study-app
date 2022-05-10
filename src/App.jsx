@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import CreatePlayer from './components/CreatePlayer';
@@ -9,6 +9,11 @@ import PlayerList from './components/PlayersPage/PlayerList';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
+};
+
+const countActivePlayers = (players) => {
+  console.log('활성 선수 수를 세는중....');
+  return players.filter((player) => player.active).length;
 };
 
 const App = () => {
@@ -63,6 +68,8 @@ const App = () => {
     setPlayers(players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
   };
 
+  const count = useMemo(() => countActivePlayers(players), [players]);
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -71,8 +78,9 @@ const App = () => {
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
           <li onClick={() => setPage(2)}>Chapter4-6</li>
-          <li onClick={() => setPage(3)}>Chapter7-8</li>
+          <li onClick={() => setPage(3)}>Chapter7-</li>
         </ul>
+        <div className="activeCount">활성 선수 수 : {count}</div>
       </div>
       <div className="app-content">
         {page === 0 ? (
