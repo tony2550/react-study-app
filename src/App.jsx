@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import CreatePlayer from './components/CreatePlayer';
@@ -68,7 +68,7 @@ const App = () => {
     setPlayers(players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
   };
 
-  const count = countActivePlayers(players);
+  const count = useMemo(() => countActivePlayers(players), [players]);
 
   return (
     <div>
@@ -78,7 +78,7 @@ const App = () => {
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
           <li onClick={() => setPage(2)}>Chapter4-6</li>
-          <li onClick={() => setPage(3)}>Chapter7-8</li>
+          <li onClick={() => setPage(3)}>Chapter7-</li>
         </ul>
         <div className="activeCount">활성 선수 수 : {count}</div>
       </div>
