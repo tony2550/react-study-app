@@ -14,4 +14,4 @@ const CreatePlayer = ({ name, backnumber, position, onChange, onCreate }) => {
   );
 };
 
-export default CreatePlayer;
+export default React.memo(CreatePlayer);

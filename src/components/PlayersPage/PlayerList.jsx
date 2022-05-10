@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './PlayerList.module.css';
 
-const Player = ({ player, onRemove, onToggle }) => {
+const Player = React.memo(({ player, onRemove, onToggle }) => {
   useEffect(() => {
     console.log(player);
   }, []);
@@ -20,7 +20,7 @@ const Player = ({ player, onRemove, onToggle }) => {
       </div>
     </div>
   );
-};
+});
 
 const PlayerList = ({ players, onRemove, onToggle }) => {
   return (
@@ -36,4 +36,4 @@ const PlayerList = ({ players, onRemove, onToggle }) => {
   );
 };
 
-export default PlayerList;
+export default React.memo(PlayerList);
