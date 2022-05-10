@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './PlayerList.module.css';
 
 const Player = ({ player, onRemove, onToggle }) => {
+  useEffect(() => {
+    console.log('player 값 설정 ');
+    console.log(player);
+    return () => {
+      console.log('player 가 바뀌기 전');
+      console.log(player);
+    };
+  }, [player]);
+
   return (
     <div>
       <div>
