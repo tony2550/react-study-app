@@ -27,16 +27,13 @@ const App = () => {
 
   const { name, backnumber, position } = inputs;
 
-  const onChange = useCallback(
-    (e) => {
-      const { name, value } = e.target;
-      setInputs({
-        ...inputs,
-        [name]: value,
-      });
-    },
-    [inputs]
-  );
+  const onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setInputs((inputs) => ({
+      ...inputs,
+      [name]: value,
+    }));
+  }, []);
 
   const [players, setPlayers] = useState([
     { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher', active: true },
@@ -53,7 +50,7 @@ const App = () => {
       backnumber,
       position,
     };
-    setPlayers(players.concat(player));
+    setPlayers((players) => players.concat(player));
 
     setInputs({
       name: '',
@@ -61,21 +58,15 @@ const App = () => {
       position: '',
     });
     nextId.current += 1;
-  }, [players, name, backnumber, position]);
+  }, [name, backnumber, position]);
 
-  const onRemove = useCallback(
-    (id) => {
-      setPlayers(players.filter((player) => player.id !== id));
-    },
-    [players]
-  );
+  const onRemove = useCallback((id) => {
+    setPlayers((players) => players.filter((player) => player.id !== id));
+  }, []);
 
-  const onToggle = useCallback(
-    (id) => {
-      setPlayers(players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
-    },
-    [players]
-  );
+  const onToggle = useCallback((id) => {
+    setPlayers((players) => players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
+  }, []);
 
   const count = useMemo(() => countActivePlayers(players), [players]);
 
