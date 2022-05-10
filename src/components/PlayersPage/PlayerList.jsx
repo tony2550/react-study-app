@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './PlayerList.module.css';
 
 const Player = ({ player, onRemove, onToggle }) => {
+  useEffect(() => {
+    console.log(player);
+  }, []);
+
   return (
     <div>
       <div>
