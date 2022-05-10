@@ -59,6 +59,10 @@ const App = () => {
     setPlayers(players.filter((player) => player.id !== id));
   };
 
+  const onToggle = (id) => {
+    setPlayers(players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
+  };
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -84,7 +88,7 @@ const App = () => {
         ) : (
           <>
             <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} onRemove={onRemove} />
+            <PlayerList players={players} onRemove={onRemove} onToggle={onToggle} />
           </>
         )}
       </div>
