@@ -11,12 +11,7 @@ const Player = ({ player }) => {
   );
 };
 
-const PlayerList = () => {
-  const players = [
-    { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher' },
-    { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop' },
-    { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder' },
-  ];
+const PlayerList = ({ players }) => {
   return (
     <>
       <div className={classes.Root}>

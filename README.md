@@ -1,13 +1,13 @@
-# React-Study-App Chapter 7. Rendering Array
+# React-Study-App Chapter 8. Handle Variable With useRef
 
 - 챕터는 branch별로 나누어져 있습니다.
 - 코드의 자세한 설명은 블로그를 확인해 주세요!
 
-## 배열 렌더링하기
+## useRef 로 컴포넌트 안의 변수 만들기
 
 ### `노션 블로그`
 
-[배열 렌더링하기](https://mookiemookiekun.notion.site/7-a12c6d7f1ede428d819abf7e94c40a1a)
+[useRef 로 컴포넌트 안의 변수 만들기](https://mookiemookiekun.notion.site/8-useRef-134972fa683a41f8b6b62e5433d27cae)
 
 ### `npm start`
 

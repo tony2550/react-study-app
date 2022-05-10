@@ -13,6 +13,12 @@ Hello.defaultProps = {
 const App = () => {
   const [page, setPage] = useState(0);
 
+  const players = [
+    { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher' },
+    { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop' },
+    { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder' },
+  ];
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -36,7 +42,7 @@ const App = () => {
         ) : page === 2 ? (
           <InputEx />
         ) : (
-          <PlayerList />
+          <PlayerList players={players} />
         )}
       </div>
     </div>
