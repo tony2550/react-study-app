@@ -7,7 +7,9 @@
 
 ### `노션 블로그`
 
-[챕터8. useRef, 배열 추가 제거 삭제](https://mookiemookiekun.notion.site/8-useRef-134972fa683a41f8b6b62e5433d27cae)
+[챕터8-1. useRef, 배열 추가 제거 삭제](https://mookiemookiekun.notion.site/8-useRef-134972fa683a41f8b6b62e5433d27cae)
+
+[챕터8-2. useRef, 배열 추가](https://mookiemookiekun.notion.site/8-2-eb131de792e348688ee1ad32280790db)
 
 ### `npm start`
 

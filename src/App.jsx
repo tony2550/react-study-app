@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
+import CreatePlayer from './components/CreatePlayer';
 import Hello from './components/Hello/Hello';
 import Wrapper from './components/Hello/Wrapper';
 import InputEx from './components/Input/InputEx';
@@ -13,15 +14,44 @@ Hello.defaultProps = {
 const App = () => {
   const [page, setPage] = useState(0);
 
-  const players = [
+  const [inputs, setInputs] = useState({
+    name: '',
+    backnumber: '',
+    position: '',
+  });
+
+  const { name, backnumber, position } = inputs;
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const [players, setPlayers] = useState([
     { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher' },
     { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop' },
     { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder' },
-  ];
+  ]);
 
   const nextId = useRef(4);
 
-  const onCreater = () => {
+  const onCreate = () => {
+    const player = {
+      id: nextId.current,
+      name,
+      backnumber,
+      position,
+    };
+    setPlayers([...players, player]);
+
+    setInputs({
+      name: '',
+      backnumber: '',
+      position: '',
+    });
     nextId.current += 1;
   };
 
@@ -33,7 +63,7 @@ const App = () => {
           <li onClick={() => setPage(0)}>Chapter1-2</li>
           <li onClick={() => setPage(1)}>Chapter3</li>
           <li onClick={() => setPage(2)}>Chapter4-6</li>
-          <li onClick={() => setPage(3)}>Chapter7</li>
+          <li onClick={() => setPage(3)}>Chapter7-8</li>
         </ul>
       </div>
       <div className="app-content">
@@ -48,7 +78,10 @@ const App = () => {
         ) : page === 2 ? (
           <InputEx />
         ) : (
-          <PlayerList players={players} />
+          <>
+            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
+            <PlayerList players={players} />
+          </>
         )}
       </div>
     </div>

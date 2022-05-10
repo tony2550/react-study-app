@@ -1,0 +1,31 @@
+.Root {
+  background-color: #ddd;
+  position: relative;
+  overflow: hidden;
+  width: 93vw;
+  height: 10vh;
+  max-height: 80vh;
+  max-width: calc(93vh * 1.78);
+  margin: auto;
+}
+
+.Container {
+  margin-top: 2vh;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  text-align: center;
+  align-items: center;
+}
+
+.Container > input {
+  font-size: 1.2em;
+  padding: 6px 8px;
+  line-height: 1.2em;
+}
+
+.Container > button {
+  font-size: 1.2em;
+  padding: 6px 8px;
+  line-height: 1.2em;
+}
