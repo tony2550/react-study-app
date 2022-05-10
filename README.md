@@ -1,15 +1,13 @@
-# React-Study-App Chapter 9.Array element Delete and Modify
+# React-Study-App Chapter 10. useEffect
 
 - 챕터는 branch별로 나누어져 있습니다.
 - 코드의 자세한 설명은 블로그를 확인해 주세요!
 
-## 챕터9. 배열의 항묵 제거 수정
+## 챕터 10. useEffect를 사용하여 마운트/언마운트/업데이트시 할 작업 설정하기
 
 ### `노션 블로그`
 
-[챕터9-1. 배열에 항목 제거 수정](https://mookiemookiekun.notion.site/9-1-1620e959b8b346268c794c9226e6698e)
-
-[챕터9-2. 배열에 항목 수정](https://mookiemookiekun.notion.site/9-2-8199009231c444e39f803bbd6adea826)
+[챕터 10. useEffect를 사용하여 마운트/언마운트/업데이트시 할 작업 설정하기](https://mookiemookiekun.notion.site/10-useEffect-e2936d6a0b334ec1a85169ec10125b7a)
 
 ### `npm start`
 
