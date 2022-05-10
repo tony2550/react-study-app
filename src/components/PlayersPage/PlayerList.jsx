@@ -5,7 +5,7 @@ const Player = ({ player, onRemove }) => {
   return (
     <div>
       <div>
-        <h3>NAME : {player.name}</h3>
+        <h3 style={{ cursor: 'pointer', color: player.active ? 'gold' : 'black' }}>NAME : {player.name}</h3>
         <h3>BackNumber : {player.backnumber}</h3>
         <h3>Position : {player.position}</h3>
       </div>

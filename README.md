@@ -9,6 +9,8 @@
 
 [챕터9-1. 배열에 항목 제거 수정](https://mookiemookiekun.notion.site/9-1-1620e959b8b346268c794c9226e6698e)
 
+[챕터9-2. 배열에 항목 수정](https://mookiemookiekun.notion.site/9-2-8199009231c444e39f803bbd6adea826)
+
 ### `npm start`
 
 Runs the app in the development mode.\

@@ -31,9 +31,9 @@ const App = () => {
   };
 
   const [players, setPlayers] = useState([
-    { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher' },
-    { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop' },
-    { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder' },
+    { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher', active: true },
+    { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop', active: false },
+    { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder', active: false },
   ]);
 
   const nextId = useRef(4);
