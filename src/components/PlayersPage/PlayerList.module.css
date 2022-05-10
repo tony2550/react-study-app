@@ -22,9 +22,28 @@
 
 .Container > div {
   margin: 10px auto;
-  height: 20vh;
+  height: 18vh;
   width: 50vw;
   border: 1px solid gray;
-  display: flex;
-  flex-direction: column;
+}
+
+.DeleteDiv {
+  position: relative;
+  left: 20vw;
+  bottom: 10vh;
+  cursor: pointer;
+}
+
+.DeleteDiv > button {
+  background-color: azure;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
+.DeleteDiv > button:hover {
+  color: red;
+  cursor: pointer;
+  border: 2px solid red;
 }

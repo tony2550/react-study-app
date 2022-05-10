@@ -55,6 +55,10 @@ const App = () => {
     nextId.current += 1;
   };
 
+  const onRemove = (id) => {
+    setPlayers(players.filter((player) => player.id !== id));
+  };
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -80,7 +84,7 @@ const App = () => {
         ) : (
           <>
             <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} />
+            <PlayerList players={players} onRemove={onRemove} />
           </>
         )}
       </div>
