@@ -45,7 +45,7 @@ const App = () => {
       backnumber,
       position,
     };
-    setPlayers([...players, player]);
+    setPlayers(players.concat(player));
 
     setInputs({
       name: '',
