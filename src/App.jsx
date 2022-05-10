@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import Hello from './components/Hello/Hello';
@@ -18,6 +18,12 @@ const App = () => {
     { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop' },
     { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder' },
   ];
+
+  const nextId = useRef(4);
+
+  const onCreater = () => {
+    nextId.current += 1;
+  };
 
   return (
     <div>
