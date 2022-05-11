@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './PlayerList.module.css';
 
-const Player = React.memo(({ player, onRemove, onToggle }) => {
+const Player = React.memo(({ player }) => {
   useEffect(() => {
     console.log(player);
   }, []);
@@ -9,26 +9,26 @@ const Player = React.memo(({ player, onRemove, onToggle }) => {
   return (
     <div>
       <div>
-        <h3 style={{ cursor: 'pointer', color: player.active ? 'gold' : 'black' }} onClick={() => onToggle(player.id)}>
+        <h3 style={{ cursor: 'pointer', color: player.active ? 'gold' : 'black' }} onClick={() => {}}>
           NAME : {player.name}
         </h3>
         <h3>BackNumber : {player.backnumber}</h3>
         <h3>Position : {player.position}</h3>
       </div>
       <div className={classes.DeleteDiv}>
-        <button onClick={() => onRemove(player.id)}>X</button>
+        <button onClick={() => {}}>X</button>
       </div>
     </div>
   );
 });
 
-const PlayerList = ({ players, onRemove, onToggle }) => {
+const PlayerList = ({ players }) => {
   return (
     <>
       <div className={classes.Root}>
         <div className={classes.Container}>
           {players.map((player) => (
-            <Player player={player} key={player.id} onRemove={onRemove} onToggle={onToggle} />
+            <Player player={player} key={player.id} />
           ))}
         </div>
       </div>

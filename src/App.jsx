@@ -76,20 +76,6 @@ const App = () => {
     nextId.current += 1;
   }, [name, backnumber, position, reset]);
 
-  const onToggle = useCallback((id) => {
-    dispatch({
-      type: 'TOGGLE_PLAYER',
-      id,
-    });
-  }, []);
-
-  const onRemove = useCallback((id) => {
-    dispatch({
-      type: 'REMOVE_PLAYER',
-      id,
-    });
-  }, []);
-
   const count = useMemo(() => countActivePlayers(players), [players]);
 
   return (
@@ -119,7 +105,7 @@ const App = () => {
           ) : (
             <>
               <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-              <PlayerList players={players} onToggle={onToggle} onRemove={onRemove} />
+              <PlayerList players={players} />
             </>
           )}
         </div>
