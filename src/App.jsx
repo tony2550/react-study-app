@@ -39,6 +39,11 @@ const reducer = (state, action) => {
           [action.name]: action.value,
         },
       };
+    case 'CREATE_PLAYER':
+      return {
+        inputs: initialState.inputs,
+        players: [...state.players, action.player],
+      };
     default:
       return state;
   }
@@ -50,6 +55,8 @@ const App = () => {
   const { players } = state;
   const { name, backnumber, position } = state.inputs;
 
+  const nextId = useRef(4);
+
   const onChange = useCallback((e) => {
     const { name, value } = e.target;
     dispatch({
@@ -58,6 +65,19 @@ const App = () => {
       value,
     });
   }, []);
+
+  const onCreate = useCallback(() => {
+    dispatch({
+      type: 'CREATE_PLAYER',
+      player: {
+        id: nextId.current,
+        name,
+        backnumber,
+        position,
+      },
+    });
+    nextId.current += 1;
+  }, [name, backnumber, position]);
 
   return (
     <div>
@@ -84,7 +104,7 @@ const App = () => {
           <InputEx />
         ) : (
           <>
-            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} />
+            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
             <PlayerList players={players} />
           </>
         )}
