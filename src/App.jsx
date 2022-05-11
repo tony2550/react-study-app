@@ -47,6 +47,9 @@ const reducer = (state, action) => {
   }
 };
 
+// UserDispatch - Context API
+export const UserDispatch = React.createContext(null);
+
 const App = () => {
   const [page, setPage] = useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -90,36 +93,38 @@ const App = () => {
   const count = useMemo(() => countActivePlayers(players), [players]);
 
   return (
-    <div>
-      <h2 className="app-header">Mookie's React study</h2>
-      <div className="app-navbar">
-        <ul className="navbtn-wrapper">
-          <li onClick={() => setPage(0)}>Chapter1-2</li>
-          <li onClick={() => setPage(1)}>Chapter3</li>
-          <li onClick={() => setPage(2)}>Chapter4-6</li>
-          <li onClick={() => setPage(3)}>Chapter7-</li>
-        </ul>
-        <div className="activeCount">활성 선수 수 : {count}</div>
+    <UserDispatch.Provider value={dispatch}>
+      <div>
+        <h2 className="app-header">Mookie's React study</h2>
+        <div className="app-navbar">
+          <ul className="navbtn-wrapper">
+            <li onClick={() => setPage(0)}>Chapter1-2</li>
+            <li onClick={() => setPage(1)}>Chapter3</li>
+            <li onClick={() => setPage(2)}>Chapter4-6</li>
+            <li onClick={() => setPage(3)}>Chapter7-</li>
+          </ul>
+          <div className="activeCount">활성 선수 수 : {count}</div>
+        </div>
+        <div className="app-content">
+          {page === 0 ? (
+            <Wrapper>
+              <Hello name="mookie" backnumber="27" team="yeon baseball" isCaptain />
+              <Hello backnumber="45" team="Boston Pinksox" />
+              <Hello name="Dohyun Kim" backnumber="4" team="DITeam" />
+            </Wrapper>
+          ) : page === 1 ? (
+            <Counter />
+          ) : page === 2 ? (
+            <InputEx />
+          ) : (
+            <>
+              <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
+              <PlayerList players={players} onToggle={onToggle} onRemove={onRemove} />
+            </>
+          )}
+        </div>
       </div>
-      <div className="app-content">
-        {page === 0 ? (
-          <Wrapper>
-            <Hello name="mookie" backnumber="27" team="yeon baseball" isCaptain />
-            <Hello backnumber="45" team="Boston Pinksox" />
-            <Hello name="Dohyun Kim" backnumber="4" team="DITeam" />
-          </Wrapper>
-        ) : page === 1 ? (
-          <Counter />
-        ) : page === 2 ? (
-          <InputEx />
-        ) : (
-          <>
-            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} onToggle={onToggle} onRemove={onRemove} />
-          </>
-        )}
-      </div>
-    </div>
+    </UserDispatch.Provider>
   );
 };
 
