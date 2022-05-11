@@ -44,6 +44,11 @@ const reducer = (state, action) => {
         inputs: initialState.inputs,
         players: [...state.players, action.player],
       };
+    case 'TOGGLE_PLAYER':
+      return {
+        ...state,
+        players: state.players.map((player) => (player.id === action.id ? { ...player, active: !player.active } : player)),
+      };
     default:
       return state;
   }
@@ -79,6 +84,13 @@ const App = () => {
     nextId.current += 1;
   }, [name, backnumber, position]);
 
+  const onToggle = useCallback((id) => {
+    dispatch({
+      type: 'TOGGLE_PLAYER',
+      id,
+    });
+  }, []);
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -105,7 +117,7 @@ const App = () => {
         ) : (
           <>
             <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} />
+            <PlayerList players={players} onToggle={onToggle} />
           </>
         )}
       </div>
