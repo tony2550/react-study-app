@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback, useReducer } from 'react';
+import React, { useState, useMemo, useReducer } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import CreatePlayer from './components/CreatePlayer';
@@ -6,7 +6,7 @@ import Hello from './components/Hello/Hello';
 import Wrapper from './components/Hello/Wrapper';
 import InputEx from './components/Input/InputEx';
 import PlayerList from './components/PlayersPage/PlayerList';
-import useInputs from './components/hooks/useInputs';
+// import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
@@ -54,27 +54,6 @@ const App = () => {
   const [page, setPage] = useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { players } = state;
-  const [{ name, backnumber, position }, onChange, reset] = useInputs({
-    name: '',
-    backnumber: '',
-    position: '',
-  });
-
-  const nextId = useRef(4);
-
-  const onCreate = useCallback(() => {
-    dispatch({
-      type: 'CREATE_PLAYER',
-      player: {
-        id: nextId.current,
-        name,
-        backnumber,
-        position,
-      },
-    });
-    reset();
-    nextId.current += 1;
-  }, [name, backnumber, position, reset]);
 
   const count = useMemo(() => countActivePlayers(players), [players]);
 
@@ -104,7 +83,7 @@ const App = () => {
             <InputEx />
           ) : (
             <>
-              <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
+              <CreatePlayer />
               <PlayerList players={players} />
             </>
           )}
