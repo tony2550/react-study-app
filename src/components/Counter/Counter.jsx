@@ -1,16 +1,26 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import classes from './Counter.module.css';
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + 1;
+    case 'DECREMENT':
+      return state - 1;
+    default:
+      return state;
+  }
+};
+
 const Counter = () => {
-  const [number, setNumber] = useState(0);
+  const [number, dispatch] = useReducer(reducer, 0);
 
   const onIncrease = () => {
-    setNumber((prevNumber) => prevNumber + 1);
-    // 값을 업데이트 하는 함수를 파라미터로 넣기
+    dispatch({ type: 'INCREMENT' });
   };
 
   const onDecrease = () => {
-    setNumber((prevNumber) => prevNumber - 1);
+    dispatch({ type: 'DECREMENT' });
   };
 
   return (
