@@ -30,7 +30,18 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  return state;
+  switch (action.type) {
+    case 'CHANGE_INPUT':
+      return {
+        ...state,
+        inputs: {
+          ...state.inputs,
+          [action.name]: action.value,
+        },
+      };
+    default:
+      return state;
+  }
 };
 
 const App = () => {
@@ -38,6 +49,15 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { players } = state;
   const { name, backnumber, position } = state.inputs;
+
+  const onChange = useCallback((e) => {
+    const { name, value } = e.target;
+    dispatch({
+      type: 'CHANGE_INPUT',
+      name,
+      value,
+    });
+  }, []);
 
   return (
     <div>
@@ -64,7 +84,7 @@ const App = () => {
           <InputEx />
         ) : (
           <>
-            <CreatePlayer name={name} backnumber={backnumber} position={position} />
+            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} />
             <PlayerList players={players} />
           </>
         )}
