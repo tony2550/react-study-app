@@ -49,6 +49,11 @@ const reducer = (state, action) => {
         ...state,
         players: state.players.map((player) => (player.id === action.id ? { ...player, active: !player.active } : player)),
       };
+    case 'REMOVE_PLAYER':
+      return {
+        ...state,
+        players: state.players.filter((player) => player.id !== action.id),
+      };
     default:
       return state;
   }
@@ -91,6 +96,13 @@ const App = () => {
     });
   }, []);
 
+  const onRemove = useCallback((id) => {
+    dispatch({
+      type: 'REMOVE_PLAYER',
+      id,
+    });
+  }, []);
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -117,7 +129,7 @@ const App = () => {
         ) : (
           <>
             <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} onToggle={onToggle} />
+            <PlayerList players={players} onToggle={onToggle} onRemove={onRemove} />
           </>
         )}
       </div>
