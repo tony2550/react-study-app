@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useRef, useMemo, useCallback, useReducer } from 'react';
 import './App.css';
 import Counter from './components/Counter/Counter';
 import CreatePlayer from './components/CreatePlayer';
@@ -16,59 +16,28 @@ const countActivePlayers = (players) => {
   return players.filter((player) => player.active).length;
 };
 
-const App = () => {
-  const [page, setPage] = useState(0);
-
-  const [inputs, setInputs] = useState({
+const initialState = {
+  inputs: {
     name: '',
     backnumber: '',
     position: '',
-  });
-
-  const { name, backnumber, position } = inputs;
-
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setInputs((inputs) => ({
-      ...inputs,
-      [name]: value,
-    }));
-  }, []);
-
-  const [players, setPlayers] = useState([
+  },
+  players: [
     { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher', active: true },
     { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop', active: false },
     { id: 3, name: 'DoDoSam', backnumber: '4', position: 'Right Fielder', active: false },
-  ]);
+  ],
+};
 
-  const nextId = useRef(4);
+const reducer = (state, action) => {
+  return state;
+};
 
-  const onCreate = useCallback(() => {
-    const player = {
-      id: nextId.current,
-      name,
-      backnumber,
-      position,
-    };
-    setPlayers((players) => players.concat(player));
-
-    setInputs({
-      name: '',
-      backnumber: '',
-      position: '',
-    });
-    nextId.current += 1;
-  }, [name, backnumber, position]);
-
-  const onRemove = useCallback((id) => {
-    setPlayers((players) => players.filter((player) => player.id !== id));
-  }, []);
-
-  const onToggle = useCallback((id) => {
-    setPlayers((players) => players.map((player) => (player.id === id ? { ...player, active: !player.active } : player)));
-  }, []);
-
-  const count = useMemo(() => countActivePlayers(players), [players]);
+const App = () => {
+  const [page, setPage] = useState(0);
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { players } = state;
+  const { name, backnumber, position } = state.inputs;
 
   return (
     <div>
@@ -80,7 +49,7 @@ const App = () => {
           <li onClick={() => setPage(2)}>Chapter4-6</li>
           <li onClick={() => setPage(3)}>Chapter7-</li>
         </ul>
-        <div className="activeCount">활성 선수 수 : {count}</div>
+        <div className="activeCount">활성 선수 수 : 0</div>
       </div>
       <div className="app-content">
         {page === 0 ? (
@@ -95,8 +64,8 @@ const App = () => {
           <InputEx />
         ) : (
           <>
-            <CreatePlayer name={name} backnumber={backnumber} position={position} onChange={onChange} onCreate={onCreate} />
-            <PlayerList players={players} onRemove={onRemove} onToggle={onToggle} />
+            <CreatePlayer name={name} backnumber={backnumber} position={position} />
+            <PlayerList players={players} />
           </>
         )}
       </div>
