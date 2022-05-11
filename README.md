@@ -1,13 +1,13 @@
-# React-Study-App Chapter14. useReducer
+# React-Study-App Chapter15. Custom Hooks
 
 - 챕터는 branch별로 나누어져 있습니다.
 - 코드의 자세한 설명은 블로그를 확인해 주세요!
 
-## 챕터 14. useReducer 를 사용하여 상태 업데이트 로직 분리하기
+## 챕터 15. 커스텀 Hooks 만들기
 
 ### `노션 블로그`
 
-[챕터 14. useReducer 를 사용하여 상태 업데이트 로직 분리하기](https://mookiemookiekun.notion.site/14-useReducer-3661541594a3453cbb4391fcda5bd2a8)
+[챕터 15. custom Hooks](https://mookiemookiekun.notion.site/15-custom-Hooks-0b397c49143942fe9032567464ee48c7)
 
 ### `npm start`
 
