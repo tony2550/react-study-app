@@ -103,6 +103,8 @@ const App = () => {
     });
   }, []);
 
+  const count = useMemo(() => countActivePlayers(players), [players]);
+
   return (
     <div>
       <h2 className="app-header">Mookie's React study</h2>
@@ -113,7 +115,7 @@ const App = () => {
           <li onClick={() => setPage(2)}>Chapter4-6</li>
           <li onClick={() => setPage(3)}>Chapter7-</li>
         </ul>
-        <div className="activeCount">활성 선수 수 : 0</div>
+        <div className="activeCount">활성 선수 수 : {count}</div>
       </div>
       <div className="app-content">
         {page === 0 ? (
