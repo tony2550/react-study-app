@@ -6,6 +6,7 @@ import Hello from './components/Hello/Hello';
 import Wrapper from './components/Hello/Wrapper';
 import InputEx from './components/Input/InputEx';
 import PlayerList from './components/PlayersPage/PlayerList';
+import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
   name: 'Do Do Sam',
@@ -17,11 +18,6 @@ const countActivePlayers = (players) => {
 };
 
 const initialState = {
-  inputs: {
-    name: '',
-    backnumber: '',
-    position: '',
-  },
   players: [
     { id: 1, name: 'Mookie', backnumber: '27', position: 'pitcher', active: true },
     { id: 2, name: 'Dohyun', backnumber: '45', position: 'Short Stop', active: false },
@@ -31,14 +27,6 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'CHANGE_INPUT':
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.name]: action.value,
-        },
-      };
     case 'CREATE_PLAYER':
       return {
         inputs: initialState.inputs,
@@ -63,18 +51,13 @@ const App = () => {
   const [page, setPage] = useState(0);
   const [state, dispatch] = useReducer(reducer, initialState);
   const { players } = state;
-  const { name, backnumber, position } = state.inputs;
+  const [{ name, backnumber, position }, onChange, reset] = useInputs({
+    name: '',
+    backnumber: '',
+    position: '',
+  });
 
   const nextId = useRef(4);
-
-  const onChange = useCallback((e) => {
-    const { name, value } = e.target;
-    dispatch({
-      type: 'CHANGE_INPUT',
-      name,
-      value,
-    });
-  }, []);
 
   const onCreate = useCallback(() => {
     dispatch({
@@ -86,8 +69,9 @@ const App = () => {
         position,
       },
     });
+    reset();
     nextId.current += 1;
-  }, [name, backnumber, position]);
+  }, [name, backnumber, position, reset]);
 
   const onToggle = useCallback((id) => {
     dispatch({
