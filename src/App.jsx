@@ -7,6 +7,7 @@ import Wrapper from './components/Hello/Wrapper'
 import InputEx from './components/Input/InputEx'
 import PlayerList from './components/PlayersPage/PlayerList'
 import Contact from './components/smtp/Contact'
+import Users from './components/Users/Users'
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
@@ -91,6 +92,7 @@ const App = () => {
             <li onClick={() => setPage(2)}>Chapter4-6</li>
             <li onClick={() => setPage(3)}>Chapter7-</li>
             <li onClick={() => setPage(4)}>MailEX</li>
+            <li onClick={() => setPage(4)}>Users(Redux)</li>
           </ul>
           <div className="activeCount">활성 선수 수 : {count}</div>
         </div>
@@ -115,8 +117,10 @@ const App = () => {
               <CreatePlayer />
               <PlayerList players={players} />
             </>
-          ) : (
+          ) : page === 4 ? (
             <Contact />
+          ) : (
+            <Users />
           )}
         </div>
       </div>
