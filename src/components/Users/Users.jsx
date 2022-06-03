@@ -1,55 +1,41 @@
-import React, { useEffect, useReducer } from 'react'
+import React from 'react'
 import axios from 'axios'
+import useAsync from '../../UserAsync.js'
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'LOADING':
-      return {
-        loading: true,
-        data: null,
-        error: null,
-      }
-    case 'SUCCESS':
-      return {
-        loading: false,
-        data: action.data,
-        error: null,
-      }
-    case 'ERROR':
-      return {
-        loading: false,
-        data: null,
-        error: action.error,
-      }
-    default:
-      throw new Error('Error Message : ' + action.type)
-  }
+const getUsers = async () => {
+    const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/users'
+    )
+    return response.data
+    // Promise 결과를 바로 data에 담는다.
+    // 요청 후 response 에서 data 추출 and 리턴
 }
 
 const Users = () => {
-  const [state, dispatch] = useReducer(reducer, {
-    loading: false,
-    data: null,
-    error: null,
-  })
+    const [state, refetch] = useAsync(getUsers, [])
+    // dispatch -> refetch 로 변경됨
+    const { loading, data: users, error } = state
 
-  const fetchUsers = async () => {
-    dispatch({ type: 'LOADING' })
-    try {
-      const response = await axios.get(
-        'https://jsonplaceholder.typicode.com/users'
-      )
-      dispatch({ type: 'SUCCESS', data: response.data })
-    } catch (e) {
-      dispatch({ type: 'ERROR', error: e })
-    }
-  }
+    if (loading) return <div>Now Loading...</div>
+    if (error) return <div>Error</div>
+    if (!users) return null
 
-  useEffect(() => {
-    fetchUsers()
-  }, [])
-
-  return <div></div>
+    return (
+        <>
+            <div>
+                <ul>
+                    {users.map((user) => (
+                        <>
+                            <li key={user.id}>
+                                {user.username} ({user.name})
+                            </li>
+                        </>
+                    ))}
+                </ul>
+                <button onClick={refetch}>Re fetch</button>
+            </div>
+        </>
+    )
 }
 
 export default Users
