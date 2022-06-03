@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import useAsync from '../../UserAsync.js';
+import User from './User.jsx';
 
 const getUsers = async () => {
     const response = await axios.get(
@@ -15,6 +16,7 @@ const Users = () => {
     const [state, refetch] = useAsync(getUsers, [], true);
     // dispatch -> refetch 로 변경됨
     const { loading, data: users, error } = state;
+    const [userId, setUserId] = useState(null);
 
     if (loading) return <div>Now Loading...</div>;
     if (error) return <div>Error</div>;
@@ -26,13 +28,18 @@ const Users = () => {
                 <ul>
                     {users.map((user) => (
                         <>
-                            <li key={user.id}>
+                            <li
+                                key={user.id}
+                                onClick={() => setUserId(user.id)}
+                                style={{ cursor: 'pointer' }}
+                            >
                                 {user.username} ({user.name})
                             </li>
                         </>
                     ))}
                 </ul>
                 <button onClick={refetch}>Re fetch</button>
+                {userId && <User id={userId} />}
             </div>
         </>
     );
