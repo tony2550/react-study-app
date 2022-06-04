@@ -1,23 +1,24 @@
-import React, { useState, useMemo, useReducer } from 'react'
-import './App.css'
-import Counter from './components/Counter/Counter'
-import CreatePlayer from './components/CreatePlayer'
-import Hello from './components/Hello/Hello'
-import Wrapper from './components/Hello/Wrapper'
-import InputEx from './components/Input/InputEx'
-import PlayerList from './components/PlayersPage/PlayerList'
-import Contact from './components/smtp/Contact'
-import Users from './components/Users/Users'
+import React, { useState, useMemo, useReducer } from 'react';
+import './App.css';
+import Counter from './components/Counter/Counter';
+import CreatePlayer from './components/CreatePlayer';
+import Hello from './components/Hello/Hello';
+import Wrapper from './components/Hello/Wrapper';
+import InputEx from './components/Input/InputEx';
+import PlayerList from './components/PlayersPage/PlayerList';
+import Contact from './components/smtp/Contact';
+import Users from './components/Users/Users';
+import UserDispatch from './UserContext';
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
     name: 'Do Do Sam',
-}
+};
 
 const countActivePlayers = (players) => {
-    console.log('활성 선수 수를 세는중....')
-    return players.filter((player) => player.active).length
-}
+    console.log('활성 선수 수를 세는중....');
+    return players.filter((player) => player.active).length;
+};
 
 const initialState = {
     players: [
@@ -43,7 +44,7 @@ const initialState = {
             active: false,
         },
     ],
-}
+};
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -51,7 +52,7 @@ const reducer = (state, action) => {
             return {
                 inputs: initialState.inputs,
                 players: [...state.players, action.player],
-            }
+            };
         case 'TOGGLE_PLAYER':
             return {
                 ...state,
@@ -60,28 +61,27 @@ const reducer = (state, action) => {
                         ? { ...player, active: !player.active }
                         : player
                 ),
-            }
+            };
         case 'REMOVE_PLAYER':
             return {
                 ...state,
                 players: state.players.filter(
                     (player) => player.id !== action.id
                 ),
-            }
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
 // UserDispatch - Context API
-export const UserDispatch = React.createContext(null)
 
 const App = () => {
-    const [page, setPage] = useState(0)
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const { players } = state
+    const [page, setPage] = useState(0);
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { players } = state;
 
-    const count = useMemo(() => countActivePlayers(players), [players])
+    const count = useMemo(() => countActivePlayers(players), [players]);
 
     return (
         <UserDispatch.Provider value={dispatch}>
@@ -131,7 +131,7 @@ const App = () => {
                 </div>
             </div>
         </UserDispatch.Provider>
-    )
-}
+    );
+};
 
-export default App
+export default App;

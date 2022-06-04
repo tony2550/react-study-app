@@ -1,16 +1,16 @@
-import React, { useContext, useCallback, useRef } from 'react'
-import classes from './CreatePlayer.module.css'
-import useInputs from './hooks/useInputs'
-import { UserDispatch } from '../App'
+import React, { useContext, useCallback, useRef } from 'react';
+import classes from './CreatePlayer.module.css';
+import useInputs from './hooks/useInputs';
+import UserDispatch from '../UserContext';
 
 const CreatePlayer = () => {
-    const dispatch = useContext(UserDispatch)
-    const nextId = useRef(4)
+    const dispatch = useContext(UserDispatch);
+    const nextId = useRef(4);
     const [{ name, backnumber, position }, onChange, reset] = useInputs({
         name: '',
         backnumber: '',
         position: '',
-    })
+    });
 
     const onCreate = useCallback(() => {
         dispatch({
@@ -21,10 +21,10 @@ const CreatePlayer = () => {
                 backnumber,
                 position,
             },
-        })
-        reset()
-        nextId.current += 1
-    }, [name, backnumber, position, reset, dispatch])
+        });
+        reset();
+        nextId.current += 1;
+    }, [name, backnumber, position, reset, dispatch]);
 
     return (
         <div className={classes.Root}>
@@ -50,7 +50,7 @@ const CreatePlayer = () => {
                 <button onClick={onCreate}>RESISTER</button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default React.memo(CreatePlayer)
+export default React.memo(CreatePlayer);
