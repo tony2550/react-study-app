@@ -1,21 +1,22 @@
 import React from 'react';
 import axios from 'axios';
-import useAsync from '../../UserAsync';
+import { useAsync } from 'react-async';
 
-const getUser = async (id) => {
+async function getUser({ id }) {
   const response = await axios.get(
     'https://jsonplaceholder.typicode.com/users/' + id
   );
   return response.data;
-};
+}
 
-const User = ({ id }) => {
-  const [state] = useAsync(() => getUser(id), [id]);
-  // getUser(id)를 콜백함수 파라미터로
-  // deps로 id 넣어줘서 id가 바뀔때마다 데이터를 호출해주어야함
-  const { loading, data: user, error } = state;
+const AsyncUser = ({ id }) => {
+  const {
+    data: user,
+    error,
+    isLoading,
+  } = useAsync({ deferFn: getUser, id, watch: id });
 
-  if (loading) return <div>Now Loading</div>;
+  if (isLoading) return <div>Now Loading</div>;
   if (error) return <div>Error</div>;
   if (!user) return null;
 
@@ -30,4 +31,4 @@ const User = ({ id }) => {
   );
 };
 
-export default User;
+export default AsyncUser;
