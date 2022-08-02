@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './onoffbutton.css';
 
 const OnOffButton = ({ innername, isOn, handleChange }) => {
     return (
