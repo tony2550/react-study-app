@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useReducer } from 'react';
 import './App.css';
+import './components/Toggle/onoffbutton.css';
 import Counter from './components/Counter/Counter';
 import CreatePlayer from './components/CreatePlayer';
 import Hello from './components/Hello/Hello';
@@ -9,6 +10,7 @@ import PlayerList from './components/PlayersPage/PlayerList';
 import Contact from './components/smtp/Contact';
 import Users from './components/Users/Users';
 import UserDispatch from './UserContext';
+import OnOffButton from './components/Toggle/OnOffButton';
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
@@ -83,6 +85,11 @@ const App = () => {
 
     const count = useMemo(() => countActivePlayers(players), [players]);
 
+    const [on, setOn] = useState(false);
+    const handleOn = () => {
+        setOn(!on);
+    };
+
     return (
         <UserDispatch.Provider value={dispatch}>
             <div>
@@ -95,6 +102,11 @@ const App = () => {
                         <li onClick={() => setPage(3)}>Chapter7-</li>
                         <li onClick={() => setPage(4)}>MailEX</li>
                         <li onClick={() => setPage(5)}>Users(Redux)</li>
+                        <OnOffButton
+                            innername="aaa"
+                            isOn={on}
+                            handleChange={() => handleOn()}
+                        />
                     </ul>
                     <div className="activeCount">활성 선수 수 : {count}</div>
                 </div>
