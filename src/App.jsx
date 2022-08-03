@@ -11,6 +11,7 @@ import Contact from "./components/smtp/Contact";
 import Users from "./components/Users/Users";
 import UserDispatch from "./UserContext";
 import OnOffButton from "./components/Toggle/OnOffButton";
+import ExcelPage from "./components/Excel/ExcelPage";
 import Axios from "axios";
 // import useInputs from './components/hooks/useInputs';
 
@@ -89,13 +90,13 @@ const App = () => {
     setOn(!on);
   };
 
-  const fatch = async () => {
-    Axios.get("/api").then((res) => console.log(res.data.test));
-  };
+  // const fatch = async () => {
+  //   Axios.get("/api").then((res) => console.log(res.data.test));
+  // };
 
-  useEffect(() => {
-    fatch();
-  }, []);
+  // useEffect(() => {
+  //   fatch();
+  // }, []);
 
   return (
     <UserDispatch.Provider value={dispatch}>
@@ -109,6 +110,7 @@ const App = () => {
             <li onClick={() => setPage(3)}>Chapter7-</li>
             <li onClick={() => setPage(4)}>MailEX</li>
             <li onClick={() => setPage(5)}>Users(Redux)</li>
+            <li onClick={() => setPage(6)}>xlsx</li>
             <OnOffButton
               innername="aaa"
               isOn={on}
@@ -140,8 +142,10 @@ const App = () => {
             </>
           ) : page === 4 ? (
             <Contact />
-          ) : (
+          ) : page === 5 ? (
             <Users />
+          ) : (
+            <ExcelPage />
           )}
         </div>
       </div>
