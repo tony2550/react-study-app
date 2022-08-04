@@ -68,6 +68,24 @@ const ExcelPage = () => {
     }
   };
 
+  const testAxios = async () => {
+    const a = "kdh";
+    const b = "12345";
+    const c = "더더더더";
+    try {
+      const response = await Axios({
+        headers: headers,
+        method: "post",
+        url: "http://localhost:5000/testaxios",
+        responseType: "blob",
+        data: JSON.stringify({ a, b, c: "aaaaa" }),
+      });
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div className={classes.Root}>
       <div className={classes.Container}>
@@ -97,6 +115,9 @@ const ExcelPage = () => {
         <div>
           <button className={classes.Downbtn} onClick={downloadExcel}>
             DOWNLOAD
+          </button>
+          <button className={classes.Downbtn} onClick={testAxios}>
+            TEST
           </button>
         </div>
       </div>
