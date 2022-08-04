@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 package-lock.json
+
+# git update-index --assume-unchanged package-lock.json 2022/8/4
