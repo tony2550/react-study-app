@@ -8,24 +8,3 @@
   max-width: calc(93vh * 1.78);
   margin: auto;
 }
-
-.chart-wrapper {
-
-  position: relative;
-  
-}
-
-useEffect(() => {
-  if (intervalRef.current) {
-    clearInterval(intervalRef.current);
-  }
-  intervalRef.current = setInterval(() => {
-    nextSliderHandler();
-  }, 3500);
-
-  return () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-  };
-}, [nextSliderHandler]);
