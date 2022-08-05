@@ -1,15 +1,23 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+} from "react";
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Chart } from "react-chartjs-2";
-
+import "./linchart.css";
+import { jsPDF } from "jspdf";
 ChartJS.register(...registerables);
 
 const options = {
   responsive: true,
+  maintainAspectRatio: false,
   plugins: {
-    annotation: {
-      annotations: {},
-    },
+    // annotation: {
+    //   annotations: {},
+    // },
     legend: {
       display: false,
     },
@@ -44,7 +52,7 @@ const options = {
       axis: "x",
       title: {
         display: true,
-        text: "Main Engine Total R/Hour",
+        text: "X",
         color: "#fff",
         font: {
           family: "Helvetica",
@@ -71,8 +79,6 @@ const options = {
           family: "Helvetica",
           weight: 200,
         },
-        padding: 15,
-        // stepSize: 500,
       },
     },
     y: {
@@ -80,7 +86,7 @@ const options = {
       type: "linear",
       title: {
         display: true,
-        text: "Cyl. Oil Feed Rate (g/kWh)",
+        text: "Y",
         color: "#fff",
         font: {
           family: "Helvetica",
@@ -110,21 +116,32 @@ const options = {
         stepSize: 0.2,
         z: 1,
       },
-      min: 0,
-      max: 3,
     },
   },
 };
 
-export const LineChart = ({ list }) => {
+export const LineChart = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    downloadPDF() {
+      const chartcanvas = chartRef.current.canvas;
+      var canvasImg = chartcanvas.toDataURL("image/jpeg", 1.0);
+      const doc = new jsPDF("landscape");
+      doc.setFontSize(20);
+      doc.text(15, 15, "Cool Chart");
+      doc.addImage(canvasImg, "JPEG", 10, 10, 280, 150);
+      doc.save("Lincahrt.pdf");
+    },
+  }));
+
   const chartRef = useRef(null);
   const [data, setData] = useState({ datasets: [] });
   // const [option, setOption] = useState(options);
 
   useEffect(() => {
     const chart = chartRef.current;
+    console.log(props.list);
     const makeDataset = () => {
-      let arr = list;
+      let arr = props.list;
       let chartdataArr = [];
       arr = arr.sort((a, b) => b.date - a.date);
       for (let i = 0; i < arr.length; i++) {
@@ -138,7 +155,7 @@ export const LineChart = ({ list }) => {
       setData({
         datasets: [
           {
-            label: "FeedRate",
+            label: "test chart",
             data: chartdataArr,
             showLine: true,
             fill: false,
@@ -156,11 +173,11 @@ export const LineChart = ({ list }) => {
     if (chart) {
       makeDataset();
     }
-  }, [list]);
+  }, [props.list]);
 
   return (
     <div className="chart_wrapper">
       <Chart ref={chartRef} type="line" options={options} data={data} />
     </div>
   );
-};
+});

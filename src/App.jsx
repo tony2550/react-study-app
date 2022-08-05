@@ -10,9 +10,9 @@ import PlayerList from "./components/PlayersPage/PlayerList";
 import Contact from "./components/smtp/Contact";
 import Users from "./components/Users/Users";
 import UserDispatch from "./UserContext";
-import OnOffButton from "./components/Toggle/OnOffButton";
 import ExcelPage from "./components/Excel/ExcelPage";
 import Axios from "axios";
+import ChartPage from "./components/Chart/ChartPage";
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
@@ -98,6 +98,12 @@ const App = () => {
   //   fatch();
   // }, []);
 
+  // <OnOffButton
+  //   innername="aaa"
+  //   isOn={on}
+  //   handleChange={() => handleOn()}
+  // />
+
   return (
     <UserDispatch.Provider value={dispatch}>
       <div>
@@ -111,11 +117,7 @@ const App = () => {
             <li onClick={() => setPage(4)}>MailEX</li>
             <li onClick={() => setPage(5)}>Users(Redux)</li>
             <li onClick={() => setPage(6)}>xlsx</li>
-            <OnOffButton
-              innername="aaa"
-              isOn={on}
-              handleChange={() => handleOn()}
-            />
+            <li onClick={() => setPage(7)}>pdf</li>
           </ul>
           <div className="activeCount">활성 선수 수 : {count}</div>
         </div>
@@ -144,8 +146,10 @@ const App = () => {
             <Contact />
           ) : page === 5 ? (
             <Users />
-          ) : (
+          ) : page === 6 ? (
             <ExcelPage />
+          ) : (
+            <ChartPage />
           )}
         </div>
       </div>
