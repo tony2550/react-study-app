@@ -1,7 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { LineChart } from "./LineChart";
 import classes from "./ChartPage.module.css";
-import { jsPDF } from "jspdf";
 
 const dataExample = [
   { xvalue: 1, yvalue: 4, date: "2020-01-12", sentence: "a start fight" },
@@ -15,6 +14,7 @@ const dataExample = [
 ];
 const ChartPage = () => {
   const childRef = useRef();
+  const [pdfPageOpen, setPdfPageOpen] = useState(false);
   // const downloadPDF = () => {
   //   const doc = new jsPDF();
 
@@ -23,16 +23,20 @@ const ChartPage = () => {
   // };
 
   return (
-    <div className={classes.ChartContainer}>
-      <button
-        onClick={() => {
-          childRef.current.downloadPDF();
-        }}
-      >
-        다운로드
-      </button>
-      <LineChart ref={childRef} list={dataExample} />
-    </div>
+    <>
+      <div className={classes.ChartContainer}>
+        <button
+          onClick={() => {
+            childRef.current.downloadPDF();
+          }}
+        >
+          다운로드
+        </button>
+        <button onClick={() => setPdfPageOpen(!pdfPageOpen)}>pdf 페이지</button>
+        <LineChart ref={childRef} list={dataExample} />
+      </div>
+      <div>{pdfPageOpen && pdfPageOpen === true ? <div>dd</div> : null}</div>
+    </>
   );
 };
 
