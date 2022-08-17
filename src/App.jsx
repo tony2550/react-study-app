@@ -13,6 +13,7 @@ import UserDispatch from "./UserContext";
 import ExcelPage from "./components/Excel/ExcelPage";
 import Axios from "axios";
 import ChartPage from "./components/Chart/ChartPage";
+import LifecycleEx from "./components/LifecycleEx";
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
@@ -107,6 +108,7 @@ const App = () => {
   return (
     <UserDispatch.Provider value={dispatch}>
       <div>
+        <LifecycleEx />
         <h2 className="app-header">Mookie's React study</h2>
         <div className="app-navbar">
           <ul className="navbtn-wrapper">
