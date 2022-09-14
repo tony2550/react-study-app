@@ -14,6 +14,7 @@ import ExcelPage from "./components/Excel/ExcelPage";
 import Axios from "axios";
 import ChartPage from "./components/Chart/ChartPage";
 import LifecycleEx from "./components/LifecycleEx";
+import SelectBox from "./components/SelectBox/SelectBox";
 // import useInputs from './components/hooks/useInputs';
 
 Hello.defaultProps = {
@@ -120,6 +121,7 @@ const App = () => {
             <li onClick={() => setPage(5)}>Users(Redux)</li>
             <li onClick={() => setPage(6)}>xlsx</li>
             <li onClick={() => setPage(7)}>pdf</li>
+            <li onClick={() => setPage(8)}>SelectBox</li>
           </ul>
           <div className="activeCount">활성 선수 수 : {count}</div>
         </div>
@@ -150,8 +152,10 @@ const App = () => {
             <Users />
           ) : page === 6 ? (
             <ExcelPage />
-          ) : (
+          ) : page === 7 ? (
             <ChartPage />
+          ) : (
+            <SelectBox />
           )}
         </div>
       </div>
