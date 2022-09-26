@@ -25,6 +25,7 @@ const Users = () => {
     return (
         <>
             <div>
+                <span>UsersV2</span>
                 <ul>
                     {users.map((user) => (
                         <>
